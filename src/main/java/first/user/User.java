@@ -1,9 +1,9 @@
 package first.user;
 
 import com.google.gson.annotations.Expose;
-import first.games.ISerializeAbleById;
+import first.games.interfaces.ISerializeAbleById;
 import first.games.GameType;
-import first.games.IGame;
+import first.games.interfaces.IGame;
 import first.games.cowsAndBulls.CowsAndBullsState;
 import first.games.hangman.HangmanGameState;
 import lombok.Getter;

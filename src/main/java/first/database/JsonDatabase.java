@@ -5,7 +5,7 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
-import first.games.ISerializeAbleById;
+import first.games.interfaces.ISerializeAbleById;
 import first.user.User;
 
 import java.io.*;

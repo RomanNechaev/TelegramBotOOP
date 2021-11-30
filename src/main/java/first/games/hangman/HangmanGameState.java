@@ -2,8 +2,8 @@ package first.games.hangman;
 
 import first.FileHandler;
 import first.IWordParser;
-import first.games.IGame;
-import first.games.ISerializeAbleById;
+import first.games.interfaces.IGame;
+import first.games.interfaces.ISerializeAbleById;
 import lombok.Getter;
 import lombok.Setter;
 
