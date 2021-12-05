@@ -6,6 +6,7 @@ import first.games.GameType;
 import first.games.interfaces.IGame;
 import first.games.cowsAndBulls.CowsAndBullsState;
 import first.games.hangman.HangmanGameState;
+import first.games.whowantotbeamillionaire.MillionaireGameState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,8 +58,12 @@ public class User implements Serializable, ISerializeAbleById {
         this.gameType = gameType;
         if (gameType == GameType.Hangman) {
             gameState = new HangmanGameState(GameID);
-        } else {
+        }
+        if (gameType == GameType.CowsAndBulls) {
             gameState = new CowsAndBullsState(GameID);
+        }
+        else {
+            gameState = new MillionaireGameState(GameID);
         }
     }
 

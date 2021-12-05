@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class UserStore {
     private static final HashMap<Long, User> userStates = new HashMap<>();
-    private static final UserRepository userRepository = new UserRepository(new HibernateDatabase());
+    private static final UserRepository userRepository = new UserRepository(new JsonDatabase("JsonDataBase"));
 
     public UserStore() {
 
