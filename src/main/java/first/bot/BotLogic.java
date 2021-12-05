@@ -1,7 +1,6 @@
 package first.bot;
 
 import first.games.GameType;
-import first.games.hangman.HangmanGameState;
 import first.user.LeaderBoard;
 import first.user.User;
 import first.user.UserState;
@@ -46,6 +45,9 @@ public class BotLogic {
             case "Виселица":
                 if (!user.isPlaying())
                     return startGame(user, GameType.Hangman);
+            case "/millionaire":
+                if(!user.isPlaying())
+                    return startGame(user, GameType.Millionaire);
             default:
                 if (user.userName == null) {
                     user.userName = userMessage;
