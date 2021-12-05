@@ -1,13 +1,13 @@
 package first.games.whowantotbeamillionaire;
 
-import first.IScheme;
-import first.IState;
+import first.games.interfaces.IScheme;
+import first.games.interfaces.IState;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MillionaireScheme<TSource, TResult> implements IScheme<TSource, TResult> {
-    private final List<IState<TSource, TResult>> states;
+public class MillionaireScheme implements IScheme<String, String> {
+    private final List<IState<String, String>> states;
     private Integer index;
 
     public MillionaireScheme() {
@@ -16,23 +16,23 @@ public class MillionaireScheme<TSource, TResult> implements IScheme<TSource, TRe
     }
 
     @Override
-    public IState<TSource, TResult> getCurrentState() {
+    public IState<String, String> getCurrentState() {
         return states.get(index);
     }
 
     @Override
-    public void changeState() {
+    public Boolean next() {
         index++;
+        return index < states.size();
     }
 
     @Override
-    public MillionaireScheme<TSource, TResult> addState(IState<TSource, TResult> state) {
+    public void addState(IState<String, String> state) {
         states.add(state);
-        return this;
     }
 
     @Override
-    public void clear() {
+    public void nullify() {
         states.clear();
         index = 0;
     }

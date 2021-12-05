@@ -1,7 +1,7 @@
 package first.games.cowsAndBulls;
 
-import first.games.ISerializeAbleById;
-import first.games.IGame;
+import first.games.interfaces.ISerializeAbleById;
+import first.games.interfaces.IGame;
 import first.IWordParser;
 import lombok.Getter;
 import lombok.Setter;

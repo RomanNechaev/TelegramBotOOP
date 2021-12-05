@@ -13,7 +13,7 @@
     <bytecodeTargetLevel>
       <module name="maven" target="16" />
       <module name="pom" target="16" />
-      <module name="TelegramBotOOP" target="16" />
+      <module name="TelegramBotOOP" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

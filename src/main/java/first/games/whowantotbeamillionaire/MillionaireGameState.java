@@ -1,27 +1,28 @@
 package first.games.whowantotbeamillionaire;
 
-import first.IScheme;
-import first.ISchemeLoader;
-import first.games.IGame;
+import first.games.interfaces.IScheme;
+import first.games.interfaces.ISchemeLoader;
+import first.games.interfaces.IGame;
 
 public class MillionaireGameState implements IGame {
     private final IScheme<String, String> scheme;
-    private final ISchemeLoader<String, String> schemeLoader;
     private Integer score;
 
-    public MillionaireGameState()
-    {
-        scheme = new MillionaireScheme<>();
-        schemeLoader = new MillionaireSchemeLoader<>();
+    public MillionaireGameState() {
+        this(new MillionaireScheme(), new MillionaireSchemeLoader());
+    }
+
+    public MillionaireGameState(IScheme<String, String> scheme, ISchemeLoader<String, String> schemeLoader) {
+        schemeLoader.load(scheme);
+        this.scheme = scheme;
     }
 
     @Override
     public String checkAnswer(String message) {
-        var answer = scheme.getCurrentState().getCorrectAnswer();
-        if (answer.equals(message))
-            return "Красавчик";
-        else
-            return "Bad boy";
+        var res = scheme.getCurrentState().execute(message);
+        if (res.isSuccessful())
+            score += 1;
+        return res.getResult();
     }
 
     @Override
@@ -31,7 +32,7 @@ public class MillionaireGameState implements IGame {
 
     @Override
     public void start() {
-        schemeLoader.load(scheme);
+        scheme.nullify();
     }
 
     @Override

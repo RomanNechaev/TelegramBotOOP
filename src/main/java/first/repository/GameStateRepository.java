@@ -2,7 +2,7 @@ package first.repository;
 
 import first.database.IDatabase;
 import first.games.GameType;
-import first.games.IGame;
+import first.games.interfaces.IGame;
 import first.games.cowsAndBulls.CowsAndBullsState;
 import first.games.hangman.HangmanGameState;
 
