@@ -5,15 +5,18 @@ import first.games.GameType;
 import first.games.interfaces.IGame;
 import first.games.cowsAndBulls.CowsAndBullsState;
 import first.games.hangman.HangmanGameState;
+import first.games.whowantotbeamillionaire.MillionaireGameState;
 
 public class GameStateRepository extends Repository<IGame> {
     private static HangmanRepository hangmanRepository;
     private static CowsAndBullsRepository cowsAndBullsRepository;
+    private static MillionaireRepository millionaireRepository;
 
     public GameStateRepository(IDatabase database) {
         super(IGame.class, database);
         hangmanRepository = new HangmanRepository(database);
         cowsAndBullsRepository = new CowsAndBullsRepository(database);
+        millionaireRepository = new MillionaireRepository(database);
     }
 
     public void save(IGame entity){
@@ -21,6 +24,9 @@ public class GameStateRepository extends Repository<IGame> {
             hangmanRepository.save((HangmanGameState) entity);
         }else if(entity instanceof CowsAndBullsState){
             cowsAndBullsRepository.save((CowsAndBullsState) entity);
+        }
+        else if(entity instanceof MillionaireGameState){
+            millionaireRepository.save((MillionaireGameState) entity);
         }
     }
 
@@ -35,6 +41,7 @@ public class GameStateRepository extends Repository<IGame> {
         return switch (gameType) {
             case Hangman -> hangmanRepository;
             case CowsAndBulls -> cowsAndBullsRepository;
+            case Millionaire -> millionaireRepository;
         };
     }
 }

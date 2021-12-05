@@ -2,10 +2,12 @@ package first.games.whowantotbeamillionaire;
 
 import first.games.interfaces.IState;
 import first.games.interfaces.IStateResponse;
+import lombok.Getter;
 
 import java.util.Locale;
 
 public class MillionaireState implements IState<String, String> {
+    @Getter
     private final MillionaireQuestionForm questionForm;
 
     public MillionaireState(MillionaireQuestionForm questionForm) {
