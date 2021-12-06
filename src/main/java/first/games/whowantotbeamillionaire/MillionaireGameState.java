@@ -19,6 +19,17 @@ import javax.persistence.Transient;
 public class MillionaireGameState implements IGame, ISerializeAbleById {
     private static ISchemeLoader<String, String> schemeLoader;
     private static IScheme<String, String> scheme;
+    private static final String RULES = """
+            Игра Кто хочет стать миллионером? - это конкурс викторина,
+            в котором участник должен правильно ответить на ряд вопросов с несколькими вариантами ответов,
+            чтобы перейти на следующий уровень.
+                        
+            За каждый правильный ответ тебе будет начисляться 1 балл.
+                        
+            Если отвечаешь неправильно, то кол-во очков аннулируется, и всё начинается сначала
+            Твоя цель - набрать максимальное кол-во очков
+                        
+            Удачи!""";
     private Integer score;
     @Id
     @Setter
@@ -48,17 +59,17 @@ public class MillionaireGameState implements IGame, ISerializeAbleById {
         if (res.isSuccessful() && scheme.next()) {
             score += 1;
         }
-        return res.getResult() + "\n" + ((MillionaireState)scheme.getCurrentState()).getQuestionForm().getQuestion()
-                + "\n" + String.join("\n",((MillionaireState)scheme.getCurrentState()).getQuestionForm().getSelection())
+        return res.getResult() + "\n" + ((MillionaireState) scheme.getCurrentState()).getQuestionForm().getQuestion()
+                + "\n" + String.join("\n", ((MillionaireState) scheme.getCurrentState()).getQuestionForm().getSelection())
                 ;
     }
 
     @Override
     @Transient
     public String getStartMessage() {
-        return ((MillionaireState)scheme.getCurrentState()).getQuestionForm().getQuestion() +
+        return ((MillionaireState) scheme.getCurrentState()).getQuestionForm().getQuestion() +
                 "\n" +
-                String.join("\n",((MillionaireState)scheme.getCurrentState()).getQuestionForm().getSelection());
+                String.join("\n", ((MillionaireState) scheme.getCurrentState()).getQuestionForm().getSelection());
     }
 
     @Override
@@ -69,7 +80,7 @@ public class MillionaireGameState implements IGame, ISerializeAbleById {
 
     @Override
     public String getRules() {
-        return "...";
+        return RULES;
     }
 
     @Override
